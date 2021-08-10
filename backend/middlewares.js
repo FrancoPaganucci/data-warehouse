@@ -2,7 +2,6 @@
 const { Ciudades, Companias, Contactos, Paises, Regiones, Usuarios } = require('./models/relations');
 
 // VALIDACIONES
-
 //==============================================================================================
 //==============================================================================================
 // validación ADMIN
