@@ -171,7 +171,7 @@ server.delete('/usuarios/borrar/:usuarioId', validarRolAdmin, async (req, res) =
         id: req.params.usuarioId
       }
     })
-    res.status(200).json({ message: `Operación exitosa. El pedido con id ${req.params.usuarioId} ha sido eliminado`});
+    res.status(200).json({ message: `Operación exitosa. El usuario con id ${req.params.usuarioId} ha sido eliminado`});
   } catch (error) {
     res.status(400).json({ error: error.message});
   }
@@ -213,16 +213,132 @@ server.post('/login', validarBodyLogin, verificarLogin, async (req, res) => {
 // =============================
 // ====== CRUD REGIONES ========
 // create
+server.post('/regiones', validarRolAdmin, async (req, res) => {
+  try {
+    const nuevaRegion = await Regiones.create({
+      nombre: req.body.nombre
+    });
+    res.status(200).json({ nuevaRegion });
+  } catch (error) {
+    res.send({ error: error.message });
+  }
+});
 // read
+server.get('/regiones', validarRolAdmin, async (req, res) => {
+  try {
+    const RegionesOk = await Regiones.findAll();
+    res.status(200).json(RegionesOk);
+  } catch (error) {
+    res.status(400).json({ error: error.message});
+  }
+});
+// read by id
 // update
+server.put('/regiones/:regionId', validarRolAdmin, async (req,res) => {
+  // update nombre
+  if (req.body.nombre) {
+    Regiones.update(
+      { nombre: req.body.nombre},
+      {
+        where: {
+          id: req.params.regionId
+        }
+      }
+    ).then(update => {
+      res.status(200).json({update});
+    }).catch(error => {
+      res.status(400).json({ error: error.message })
+    });
+  }
+  // si el campo no existe
+  else {
+    res.status(400).json({ message: "campo a actualizar inexistente"});
+  };
+});
 // delete
+server.delete('/regiones/borrar/:regionId', validarRolAdmin, async (req, res) => {
+  try {
+    await Regiones.destroy({
+      where: {
+        id: req.params.regionId
+      }
+    })
+    res.status(200).json({ message: `Operación exitosa. La región con id ${req.params.regionId} ha sido eliminada`});
+  } catch (error) {
+    res.status(400).json({ error: error.message});
+  }
+});
+
+
 
 // =============================
 // ====== CRUD PAISES ==========
 // create
+server.post('/paises', validarRolAdmin, async (req, res) => {
+  // Encontrar el id para agregarlo en la foreign key
+  try {
+    // buscar id en la tabla 'regiones' con el id req.body.region y guardarla en VARIABLE
+    const regionOk = Regiones.findOne({
+      where: {
+        nombre: req.body.region
+      }
+    })
+
+    const nuevoPais = await Paises.create({
+      nombre: req.body.nombre,
+      region_id: regionOk.id
+    });
+    res.status(200).json({ nuevoPais });
+  } catch (error) {
+    res.send({ error: error.message });
+  }
+});
 // read
+server.get('/paises', validarRolAdmin, async (req, res) => {
+  try {
+    const paisesOk = await Paises.findAll();
+    res.status(200).json(paisesOk);
+  } catch (error) {
+    res.status(400).json({ error: error.message});
+  }
+});
+// read by id
 // update
+server.put('/paises/:paisId', validarRolAdmin, (req,res) => {
+  // update nombre
+  if (req.body.nombre) {
+    Paises.update(
+      { nombre: req.body.nombre},
+      {
+        where: {
+          id: req.params.paisId
+        }
+      }
+    ).then(update => {
+      res.status(200).json({update});
+    }).catch(error => {
+      res.status(400).json({ error: error.message })
+    });
+  }
+  // si el campo no existe
+  else {
+    res.status(400).json({ message: "campo a actualizar inexistente"});
+  };
+});
+
 // delete
+server.delete('/paises/borrar/:paisId', validarRolAdmin, async (req, res) => {
+  try {
+    await Paises.destroy({
+      where: {
+        id: req.params.paisId
+      }
+    })
+    res.status(200).json({ message: `Operación exitosa. La región con id ${req.params.paisId} ha sido eliminada`});
+  } catch (error) {
+    res.status(400).json({ error: error.message});
+  }
+});
 
 // =============================
 // ====== CRUD CIUDADES ========
