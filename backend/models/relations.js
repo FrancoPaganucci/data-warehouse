@@ -17,6 +17,10 @@ Paises.hasMany(Ciudades, {
     foreignKey: "pais_id"
 });
 
+Paises.belongsTo(Regiones, {
+    foreignKey: "region_id"
+})
+
 
 // Patrón de "decorador", importo, decoro con relaciones, vuelvo a exportar
 module.exports = { Ciudades, Companias, Contactos, Paises, Regiones, Usuarios };

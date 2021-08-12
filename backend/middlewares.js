@@ -98,6 +98,33 @@ const validarUsuarioEmail = async (req, res, next) => {
   }
 };
 
+//==============================================================================================
+//==============================================================================================
+// validaciones REGIONES
+const validarBodyRegion = (req, res, next) => {
+  if (
+      !req.body.nombre
+  ) {
+      res.status(400).json({
+          error: "debe ingresar el nombre de la región",
+      });
+  } else {
+      next();
+  }
+};
+// Validaciones PAISES
+const validarBodyPais = (req, res, next) => {
+  if (
+    !req.body.nombre
+  ) {
+    res.status(400).json({
+      error: "debe ingresar el nombre del país",
+    });
+  } else {
+    next();
+  }
+};
 
 
-module.exports = { validarRolAdmin, validarBodyLogin, verificarLogin, validarBodyNuevoUsuario, validarUsuarioEmail };
+
+module.exports = { validarRolAdmin, validarBodyLogin, verificarLogin, validarBodyNuevoUsuario, validarUsuarioEmail, validarBodyRegion, validarBodyPais };

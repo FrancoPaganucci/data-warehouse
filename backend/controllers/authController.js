@@ -1,6 +1,9 @@
 const { Usuarios } = require('../models/relations');
 const jwt = require("jsonwebtoken");
 const secretJWT = process.env.JWT_SECRET;
+const express = require('express');
+const expressJwt = require("express-jwt");
+const server = express();
 server.use(
     expressJwt({
       secret: secretJWT,
