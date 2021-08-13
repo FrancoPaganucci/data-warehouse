@@ -26,7 +26,7 @@ server.use(
   );
 
 // importar MIDDLEWARES DE VALIDACIÓN ya no es necesario una vez que está todo separado por controladores y rutas
-const { validarRolAdmin, validarBodyRegion, validarBodyPais } = require('./middlewares');
+const { validarRolAdmin, validarBodyRegion, validarBodyPais, validarBodyCompania } = require('./middlewares');
 
 
 // ============================
@@ -51,16 +51,12 @@ server.use('/paises', paisesRoutes);
 // CIUDADES
 const ciudadesRoutes = require('./routes/ciudadesRoutes');
 server.use('/ciudades', ciudadesRoutes);
+//================================================
+// COMPAÑÍAS
+const companiasRoutes = require('./routes/companiasRoutes');
+server.use('/companias', companiasRoutes);
 
 // FALTAN VALIDACIONES !! CHEQUEAR QUE EN LOS POST NO SE REPITAN LOS VALORES EN LA BASE (ej: crear un pais/ciudad/region que ya exista en la DB)
-
-// ================================================================================================
-// =========================================== COMPANIAS (CRUD) ADMINS ONLY =======================
-// create
-// read
-// update
-// delete
-
 
 // ================================================================================================
 // =========================================== CONTACTOS (CRUD) ===================================

@@ -1,6 +1,5 @@
 // instanciar modelos
 const { Ciudades, Companias, Contactos, Paises, Regiones, Usuarios } = require('./models/relations');
-
 // VALIDACIONES
 //==============================================================================================
 //==============================================================================================
@@ -23,7 +22,6 @@ const validarRolAdmin = async (req, res, next) => {
       res.status(400).json({ error: error.message })
     }
   };
-
 //==============================================================================================
 //==============================================================================================
 // validaciones LOGIN
@@ -61,7 +59,6 @@ const verificarLogin = async (req, res, next) => {
       res.send({ error: error.message });
     }
   };
-
 //==============================================================================================
 //==============================================================================================
 // validaciones USUARIOS
@@ -97,7 +94,6 @@ const validarUsuarioEmail = async (req, res, next) => {
     res.send({ error: error.message });
   }
 };
-
 //==============================================================================================
 //==============================================================================================
 // validaciones REGIONES
@@ -124,7 +120,24 @@ const validarBodyPais = (req, res, next) => {
     next();
   }
 };
+//==============================================================================================
+//==============================================================================================
+// validaciones REGIONES
+const validarBodyCompania = (req, res, next) => {
+  if (
+      !req.body.nombre ||
+      !req.body.direccion ||
+      !req.body.email ||
+      !req.body.telefono ||
+      !req.body.ciudad_id
+  ) {
+      res.status(400).json({
+          error: "datos incompletos, se requiere: nombre | direccion | email | telefono | ciudad_id",
+      });
+  } else {
+      next();
+  }
+};
 
 
-
-module.exports = { validarRolAdmin, validarBodyLogin, verificarLogin, validarBodyNuevoUsuario, validarUsuarioEmail, validarBodyRegion, validarBodyPais };
+module.exports = { validarRolAdmin, validarBodyLogin, verificarLogin, validarBodyNuevoUsuario, validarUsuarioEmail, validarBodyRegion, validarBodyPais, validarBodyCompania };
