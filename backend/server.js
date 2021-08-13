@@ -11,7 +11,7 @@ const server = express();
 const PORT = process.env.APP_PORT;
 // instanciar modelos (ya no es necesario una vez que está todo separado en controladores y rutas)
 const { Ciudades, Companias, Contactos, Paises, Regiones, Usuarios } = require('./models/relations');
-// middlewares
+// middlewares globales
 server.use(helmet());
 server.use(express.json());
 server.use(compression());
@@ -47,76 +47,12 @@ server.use('/regiones', regionesRoutes);
 // PAISES
 const paisesRoutes = require('./routes/paisesRoutes');
 server.use('/paises', paisesRoutes);
+//================================================
+// CIUDADES
+const ciudadesRoutes = require('./routes/ciudadesRoutes');
+server.use('/ciudades', ciudadesRoutes);
 
-// ================================================================================================
-// =========================================== REGION/CIUDAD (CRUD) ADMINS ONLY ===================
-
-// FALTAN VALIDACIONES !! 
-
-
-// =============================
-// ====== CRUD CIUDADES ========
-// create
-
-// read
-server.get('/ciudades', validarRolAdmin, async (req, res) => {
-  try {
-    const ciudadesOk = await Ciudades.findAll();
-    res.status(200).json(ciudadesOk);
-  } catch (error) {
-    res.status(400).json({ error: error.message});
-  }
-});
-// read by id
-server.get('/ciudades/:ciudadId', validarRolAdmin, async (req, res) => {
-  try {
-    const ciudadOk = await Ciudades.findOne({
-      where: {
-        id: req.params.ciudadId
-      }
-    }) 
-    res.status(200).json(ciudadOk);
-  } catch (error) {
-    res.status(400).json({ error: error.message});
-  }
-});
-
-// update
-server.put('/ciudades/:ciudadId', validarRolAdmin, (req,res) => {
-  // update nombre
-  if (req.body.nombre) {
-    Ciudades.update(
-      { nombre: req.body.nombre},
-      {
-        where: {
-          id: req.params.ciudadId
-        }
-      }
-    ).then(update => {
-      res.status(200).json({update});
-    }).catch(error => {
-      res.status(400).json({ error: error.message })
-    });
-  }
-  // si el campo no existe
-  else {
-    res.status(400).json({ message: "campo a actualizar inexistente"});
-  };
-});
-
-// delete
-server.delete('/ciudades/borrar/:ciudadId', validarRolAdmin, async (req, res) => {
-  try {
-    await Ciudades.destroy({
-      where: {
-        id: req.params.ciudadId
-      }
-    })
-    res.status(200).json({ message: `Operación exitosa. La ciudad con id ${req.params.ciudadId} ha sido eliminada`});
-  } catch (error) {
-    res.status(400).json({ error: error.message});
-  }
-});
+// FALTAN VALIDACIONES !! CHEQUEAR QUE EN LOS POST NO SE REPITAN LOS VALORES EN LA BASE (ej: crear un pais/ciudad/region que ya exista en la DB)
 
 // ================================================================================================
 // =========================================== COMPANIAS (CRUD) ADMINS ONLY =======================

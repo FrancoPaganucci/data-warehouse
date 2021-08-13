@@ -5,7 +5,7 @@ const postPais = async (req, res) => {
     try {
       const nuevoPais = await Paises.create({
         nombre: req.body.nombre,
-        region_id: req.body.regionId
+        region_id: req.body.region_id
       });
       res.status(200).json({ nuevoPais });
     } catch (error) {
@@ -59,12 +59,21 @@ const putPaisPorId = (req,res) => {
 
 const deletePaisPorId = async (req, res) => {
     try {
-      await Paises.destroy({
+      const paisBorrable = await Paises.findOne({
         where: {
           id: req.params.paisId
         }
       })
-      res.status(200).json({ message: `Operación exitosa. El país con id ${req.params.paisId} ha sido eliminado`});
+      if (!paisBorrable) {
+        res.status(400).json({error: `Id ${req.params.paisId} not found.`});
+      } else {
+        await Paises.destroy({
+          where: {
+            id: req.params.paisId
+          }
+        })
+        res.status(200).json({ message: `Operación exitosa. El país con id ${req.params.paisId} ha sido eliminado`});
+      }
     } catch (error) {
       res.status(400).json({ error: error.message});
     }

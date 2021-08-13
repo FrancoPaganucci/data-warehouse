@@ -9,6 +9,7 @@ const Paises = sequelize.define(
             notNull: true
         },
         region_id: {
+            field: "region_id",
             type: DataTypes.INTEGER,
             notNull: true,
             references: {

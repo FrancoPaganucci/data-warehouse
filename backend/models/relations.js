@@ -19,7 +19,7 @@ Paises.hasMany(Ciudades, {
 
 Paises.belongsTo(Regiones, {
     foreignKey: "region_id"
-})
+});
 
 
 // Patrón de "decorador", importo, decoro con relaciones, vuelvo a exportar
