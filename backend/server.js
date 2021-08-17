@@ -55,16 +55,12 @@ server.use('/ciudades', ciudadesRoutes);
 // COMPAÑÍAS
 const companiasRoutes = require('./routes/companiasRoutes');
 server.use('/companias', companiasRoutes);
+//================================================
+// CONTACTOS
+const contactosRoutes = require('./routes/contactosRoutes');
+server.use('/contactos', contactosRoutes);
 
 // FALTAN VALIDACIONES !! CHEQUEAR QUE EN LOS POST NO SE REPITAN LOS VALORES EN LA BASE (ej: crear un pais/ciudad/region que ya exista en la DB)
-
-// ================================================================================================
-// =========================================== CONTACTOS (CRUD) ===================================
-// create
-// read
-// update
-// delete
-
 
 // ===============================================================================================
 //=================================== INICIALIZAR EL SERVIDOR ====================================

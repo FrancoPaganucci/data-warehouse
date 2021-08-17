@@ -122,7 +122,7 @@ const validarBodyPais = (req, res, next) => {
 };
 //==============================================================================================
 //==============================================================================================
-// validaciones REGIONES
+// validaciones COMPAÑÍAS
 const validarBodyCompania = (req, res, next) => {
   if (
       !req.body.nombre ||
@@ -138,6 +138,23 @@ const validarBodyCompania = (req, res, next) => {
       next();
   }
 };
+//==============================================================================================
+//==============================================================================================
+// validaciones CONTACTOS
+const validarBodyContacto = (req, res, next) => {
+  if (
+      !req.body.nombre ||
+      !req.body.apellido ||
+      !req.body.email ||
+      !req.body.cargo ||
+      !req.body.compania_id
+  ) {
+      res.status(400).json({
+          error: "datos incompletos, se requiere: nombre | apellido | email | cargo | compania_id",
+      });
+  } else {
+      next();
+  }
+};
 
-
-module.exports = { validarRolAdmin, validarBodyLogin, verificarLogin, validarBodyNuevoUsuario, validarUsuarioEmail, validarBodyRegion, validarBodyPais, validarBodyCompania };
+module.exports = { validarRolAdmin, validarBodyLogin, verificarLogin, validarBodyNuevoUsuario, validarUsuarioEmail, validarBodyRegion, validarBodyPais, validarBodyCompania, validarBodyContacto };

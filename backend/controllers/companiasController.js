@@ -38,89 +38,86 @@ const getCompaniaPorId = async (req, res) => {
 };
 
 const putCompaniaPorId = async (req, res) => {
+  // if nombre
+  if (req.body.nombre) {
     try {
-      // if nombre
-      if(req.params.nombre){
-        Companias.update(
-          { nombre: req.body.nombre},
-          {
-            where: {
-              id: req.params.companiaId
-            }
+      const nombreUpdate = await Companias.update(
+        { nombre: req.body.nombre },
+        {
+          where: {
+            id: req.params.companiaId
           }
-        ).then(update => {
-          res.status(200).json({update});
-        }).catch(error => {
-          res.status(400).json({ error: error.message })
         });
-      }
-      // if direccion
-      if(req.params.direccion){
-        Companias.update(
-          { direccion: req.body.direccion},
-          {
-            where: {
-              id: req.params.companiaId
-            }
-          }
-        ).then(update => {
-          res.status(200).json({update});
-        }).catch(error => {
-          res.status(400).json({ error: error.message })
-        });
-      }
-      // if email
-      if(req.params.email){
-        Companias.update(
-          { email: req.body.email},
-          {
-            where: {
-              id: req.params.companiaId
-            }
-          }
-        ).then(update => {
-          res.status(200).json({update});
-        }).catch(error => {
-          res.status(400).json({ error: error.message })
-        });
-      }
-      // if telefono
-      if(req.params.telefono){
-        Companias.update(
-          { telefono: req.body.telefono},
-          {
-            where: {
-              id: req.params.companiaId
-            }
-          }
-        ).then(update => {
-          res.status(200).json({update});
-        }).catch(error => {
-          res.status(400).json({ error: error.message })
-        });
-      }
-      // if ciudad_id
-      if(req.params.ciudad_id){
-        Companias.update(
-          { ciudad_id: req.body.ciudad_id},
-          {
-            where: {
-              id: req.params.companiaId
-            }
-          }
-        ).then(update => {
-          res.status(200).json({update});
-        }).catch(error => {
-          res.status(400).json({ error: error.message })
-        });
-      }
-      // si el campo no existe
-      else {
-        res.status(400).json({ message: "campo a actualizar inexistente"});
-      };
+      res.status(200).json(nombreUpdate);
     } catch (error) {
-      res.status(400).json({ error: error.message });
+      res.status(400).json({ error: "Campo a actualizar inexistente" });
     }
+  }
+  // if direccion
+  if (req.body.direccion) {
+    try {
+      const direccionUpdate = await Companias.update(
+        { direccion: req.body.direccion },
+        {
+          where: {
+            id: req.params.companiaId
+          }
+        });
+      res.status(200).json(direccionUpdate);
+
+    } catch (error) {
+      res.status(400).json({ error: "Campo a actualizar inexistente" });
+    }
+  }
+  // if email
+  if (req.body.email) {
+    try {
+      const emailUpdate = await Companias.update(
+        { email: req.body.email },
+        {
+          where: {
+            id: req.params.companiaId
+          }
+        });
+      res.status(200).json(emailUpdate);
+    } catch (error) {
+      res.status(400).json({ error: "Campo a actualizar inexistente" });
+    }
+  }
+  // if telefono
+  if (req.body.telefono) {
+    try {
+      const telefonoUpdate = await Companias.update(
+        { telefono: req.body.telefono },
+        {
+          where: {
+            id: req.params.companiaId
+          }
+        });
+      res.status(200).json(telefonoUpdate);
+    } catch (error) {
+      res.status(400).json({ error: "Campo a actualizar inexistente" });
+    }
+  }
+  // if ciudad_id
+  if (req.body.ciudad_id) {
+    try {
+      const ciudadIdUpdate = await Companias.update(
+        { ciudad_id: req.body.ciudad_id },
+        {
+          where: {
+            id: req.params.companiaId
+          }
+        });
+      res.status(200).json(ciudadIdUpdate);
+    } catch (error) {
+      res.status(400).json({ error: "Campo a actualizar inexistente" });
+    }
+  }
+  // si el campo no existe
+  else {
+    res.status(400).json({ message: "campo a actualizar inexistente" });
+  };
 };
 
 const deleteCompaniaPorId = async (req, res) => {
