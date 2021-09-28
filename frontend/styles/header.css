@@ -1,0 +1,50 @@
+header {
+  width: 100%;
+  display: block;
+  position: relative;
+  height: 95px;
+  top: 0;
+  z-index: 1000;
+  background-color: #2a7fc5;
+}
+
+header a .main-logo {
+  height: 48.8px;
+  width: 48.8px;
+  float: left;
+  margin-left: 22px;
+  padding-top: 25px;
+}
+
+header .navbar {
+  float: right;
+}
+
+header .navbar .left-menu {
+  padding-top: 3px;
+  margin: 40px;
+}
+
+header .navbar .left-menu ul {
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  background-color: #FFFFFF;
+  opacity: 100%;
+  top: 0px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .navbar .left-menu ul li {
+  padding-right: 30px;
+  background-color: #2a7fc5;
+}
+
+header .navbar .left-menu ul li a {
+  color: #FFFFFF;
+}
+/*# sourceMappingURL=header.css.map */

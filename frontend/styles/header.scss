@@ -1,0 +1,41 @@
+@import "variables";
+
+header {
+    width: 100%;
+    display: block;
+    position: relative;
+    height: 95px;
+    top: 0;
+    z-index: 1000;
+    background-color: $theme-color-main;
+    a .main-logo {
+        height: 48.8px;
+        width: 48.8px;
+        float: left;
+        margin-left: 22px;
+        padding-top: 25px;
+    }
+    .navbar {
+        float: right;
+        .left-menu {
+            padding-top: 3px;
+            margin: 40px;
+            ul {
+                list-style-type: none;
+                display: flex;
+                position: relative;
+                background-color: #FFFFFF;
+                opacity: 100%;
+                top: 0px;
+                align-items: center;
+                li {
+                    padding-right: 30px;
+                    background-color: $theme-color-main;
+                    a {
+                        color: #FFFFFF;
+                    }
+                }
+            }
+        }
+    }
+}
