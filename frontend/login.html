@@ -10,25 +10,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <!--css-->
     <link rel="stylesheet" href="./styles/styles.css">
-    <title>Usuarios</title>
+    <title>Login</title>
 </head>
 <body>
     <header>
         <a href="index.html"><img id="main-logo" class="main-logo" src="" alt=""></a>
         <nav class="navbar">
-            <div class="left-menu">
-                <ul>
-                    <li><a href="./contactos.html">Contactos</a></li>
-                    <li><a href="./usuarios.html">Usuarios</a></li>
-                    <li><a href="./companias.html">Compañías</a></li>
-                    <li><a href="./regionCiudad.html">Región/Ciudad</a></li>
-                </ul>
-            </div>
+            <!--navbar vacío-->
         </nav>
     </header>
 
     <main>
-
+        <!--Componente de login-->
+        <div class="login-box">
+            <h1 class="bienvenido">Bienvenido</h1>
+            <label for="usuario">
+                <input type="text" placeholder="Usuario" id="usuario" class="login-inputs">
+            </label>
+            <label for="password">
+                <input type="password" placeholder="Contraseña" class="login-inputs">
+            </label>
+            <div class="ingresar-btn-ctn">
+                <button type="submit" class="ingresar-btn">Ingresar</button>
+            </div>
+        </div>
     </main>
 </body>
 </html>

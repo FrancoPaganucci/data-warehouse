@@ -1,11 +1,10 @@
-@import "header", "variables";
+@import "header", "variables", "login";
 
 * {
     margin: 0;
     padding: 0;
     max-width: 100%;
-    font-family: 'Montserrat', sans-serif;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', 'regular', 'bold';
     list-style: none;
     text-decoration: none;
 }
