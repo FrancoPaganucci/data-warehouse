@@ -25,15 +25,18 @@
         <div class="login-box">
             <h1 class="bienvenido">Bienvenido</h1>
             <label for="usuario">
-                <input type="text" placeholder="Usuario" id="usuario" class="login-inputs">
+                <input type="text" placeholder="Usuario" id="emailInput" class="login-inputs">
             </label>
             <label for="password">
-                <input type="password" placeholder="Contraseña" class="login-inputs">
+                <input type="password" placeholder="Contraseña" class="login-inputs" id="passwordInput">
             </label>
             <div class="ingresar-btn-ctn">
-                <button type="submit" class="ingresar-btn">Ingresar</button>
+                <button type="submit" class="ingresar-btn" id="login">Ingresar</button>
             </div>
         </div>
     </main>
+
+    <script src="../backend/server.js"></script>
+    <script src="./js/login.js"></script>
 </body>
 </html>

@@ -32,6 +32,8 @@ const login = async (req, res) => {
         secretJWT,
         { expiresIn: "120min" }
       );
+      console.log(`Usuario logueado, token es: ${token}`);
+      sessionStorage.setItem('login', true);
       res.status(200).json({ token });
     } catch (error) {
       res.status(400).json({ error: error.message});
