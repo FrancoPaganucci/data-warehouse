@@ -2,7 +2,7 @@
 /*if (localStorage.getItem('token').length !== null) {
     localStorage.removeItem('token');
 } */
-const logged = false;
+//const logged = false;
 
 document.querySelector("#login").addEventListener('click', async function(ev) {
 
@@ -24,9 +24,11 @@ document.querySelector("#login").addEventListener('click', async function(ev) {
         const responseJson = await responseObject.json();
 
         // hacer algo con la respuesta
-        //console.log(responseJson);
+        console.log(responseJson);
         // si el login es exitoso, redireccionar a contactos, si no mostrar error.
         if (responseJson) {
+            sessionStorage.setItem("token", JSON.stringify(responseJson));
+            console.log(sessionStorage.getItem("token"));
             window.location.href = "contactos.html";
         }
     } catch (error) {
