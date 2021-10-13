@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
     <link rel="stylesheet" href="./styles/styles.css">
     <title>Usuarios</title>
 </head>
+
 <body>
     <header>
         <a href="index.html"><img id="main-logo" class="main-logo" src="" alt=""></a>
@@ -28,7 +30,46 @@
     </header>
 
     <main>
+        <!--Form crear nuevo contacto-->
+        <div class="create-user-box">
+            <h1 class="crear-usuario-title">Crear usuario</h1>
+            <div class="form-component">
+                <label for="nombre">
+                    <p>Nombre</p>
+                    <input type="text" placeholder="nombre" id="nombre-input" class="create-user-inputs">
+                </label>
+                <label for="apellido">
+                    <p>Apellido</p>
+                    <input type="text" placeholder="apellido" id="apellido-input" class="create-user-inputs">
+                </label>
+                <label for="email">
+                    <p>Email</p>
+                    <input type="text" placeholder="email" id="email-input" class="create-user-inputs">
+                </label>
+                <label for="perfil">
+                    <p>Perfil</p>
+                    <select name="perfil" id="perfil-input">
+                        <option value="admin">Admin</option>
+                        <option value="basic">Básico</option>
+                    </select>
+                </label>
+                <label for="password">
+                    <p>Contraseña</p>
+                    <input type="password" placeholder="contraseña" id="password-input" class="create-user-inputs">
+                </label>
+                <label for="password-repeat">
+                    <p>Repetir contraseña</p>
+                    <input type="password" placeholder="repetir contraseña" id="password-repeat-input" class="create-user-inputs">
+                </label>
 
+                <div class="crear-usuario-btn-ctn">
+                    <button type="submit" class="crear-usuario-btn" id="crear-usuario-btn">Crear</button>
+                </div>
+            </div>
+        </div>
     </main>
+
+    <script src="./js/crearUsuarios.js"></script>
 </body>
+
 </html>
