@@ -6,11 +6,11 @@ const {
     updateUsuarioPorId,
     deleteUsuarioPorId
 } = require('../controllers/usuariosController');
-const { validarRolAdmin, validarBodyNuevoUsuario, validarUsuarioEmail} = require('../middlewares');
+const { validarRolAdmin, validarBodyNuevoUsuario, validarUsuarioEmail, validarPasswordRepeat} = require('../middlewares');
 // ================================================================================================
 // =========================================== USUARIOS (CRUD) ADMINS ONLY ========================
 // Create usuario (ver en la guía qué campos pide el frontend)
-router.post('/', validarRolAdmin, validarBodyNuevoUsuario, validarUsuarioEmail, postUsuario);
+router.post('/', validarRolAdmin, validarBodyNuevoUsuario, validarPasswordRepeat, validarUsuarioEmail, postUsuario);
 // Read usuarios
 router.get('/', validarRolAdmin, getUsuarios);
 // Read usuario x id

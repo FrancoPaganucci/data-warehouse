@@ -1,5 +1,5 @@
 const token = sessionStorage.getItem("token");
-tokenJson = JSON.parse(token);
+const tokenJson = JSON.parse(token);
 console.log(tokenJson);
 
 const traerContactos = async () => {

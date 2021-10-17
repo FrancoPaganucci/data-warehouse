@@ -64,19 +64,34 @@ const verificarLogin = async (req, res, next) => {
 // validaciones USUARIOS
 const validarBodyNuevoUsuario = (req, res, next) => {
   if (
-      !req.body.nombre ||
-      !req.body.apellido ||
-      !req.body.email ||
-      !req.body.perfil ||
-      !req.body.password
+    !req.body.nombre ||
+    !req.body.apellido ||
+    !req.body.email ||
+    !req.body.perfil ||
+    !req.body.password ||
+    !req.body.passwordRepeat
   ) {
-      res.status(400).json({
-          error: "debe registrarse con los datos completos",
-      });
+    alert("debe registrarse con los datos completos")
+    res.status(400).json({
+      error: "debe registrarse con los datos completos",
+    });
+
   } else {
-      next();
+    next();
   }
 };
+
+const validarPasswordRepeat = (req, res, next) => {
+  if (req.body.password !== req.body.passwordRepeat) {
+    alert("Los campos 'Contraseña' y 'Repetir contraseña' no coinciden.");
+
+    res.status(400).json( {
+      error: "Los campos 'Contraseña' y 'Repetir contraseña' no coinciden."
+    })
+  } else {
+    next();
+  }
+}
 
 const validarUsuarioEmail = async (req, res, next) => {
   try {
@@ -157,4 +172,4 @@ const validarBodyContacto = (req, res, next) => {
   }
 };
 
-module.exports = { validarRolAdmin, validarBodyLogin, verificarLogin, validarBodyNuevoUsuario, validarUsuarioEmail, validarBodyRegion, validarBodyPais, validarBodyCompania, validarBodyContacto };
+module.exports = { validarRolAdmin, validarBodyLogin, verificarLogin, validarBodyNuevoUsuario, validarUsuarioEmail, validarBodyRegion, validarBodyPais, validarBodyCompania, validarBodyContacto, validarPasswordRepeat };
