@@ -1,0 +1,14 @@
+#ctn-regiones {
+    padding: 2em 6em;
+    .bloque-region {
+        .region {
+            margin: 10px 0;
+            .paises {
+                margin: 20px 10px;
+                .ciudades {
+                    margin: 20px 20px;
+                }
+            }
+        }
+    }
+}

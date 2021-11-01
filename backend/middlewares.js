@@ -48,9 +48,10 @@ const verificarLogin = async (req, res, next) => {
       });
   
       if (!loginOk) {
-        res.status(400).json({
+        /*res.status(400).json({
           error: "Credenciales incorrectas"
-        })
+        })*/
+        res.send("<html> <head>server Response</head><body><h1> Error <p>credenciales incorrectas</p></h1></body></html>");
       } else {
         next();
       }

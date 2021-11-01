@@ -99,27 +99,4 @@ function validarCamposCrearUsuario() {
     } else {
         return
     }
-}
-
-
-// FETCH USUARIOS
-const traerUsuarios = async () => {
-    try {
-        const resp = await fetch('http://localhost:3000/usuarios', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${tokenJson.token}`
-            },
-        });
-
-        const info = await resp.json();
-        return info;
-    } catch (error) {
-        console.log(error);
-    }
 };
-let resultado = traerUsuarios();
-resultado.then(response => {
-    console.log(response);
-});

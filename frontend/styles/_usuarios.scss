@@ -43,3 +43,26 @@
         }
     }
 }
+
+#lista-usuarios {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1em 1em;
+    margin: 0 auto;
+    font-size: 28px;
+    #usuarios-title {
+        margin-bottom: 20px;
+    }
+    #tabla-usuarios {
+        //padding: 15px;
+        thead {
+            background-color: beige;
+        }
+        #info-usuarios {
+            td {
+                padding: 10px 0;
+            }
+        }
+    }
+}

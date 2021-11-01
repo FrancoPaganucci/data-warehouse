@@ -169,6 +169,48 @@ header .navbar .left-menu ul li a {
   margin-top: 2vh;
 }
 
+#lista-usuarios {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1em 1em;
+  margin: 0 auto;
+  font-size: 28px;
+}
+
+#lista-usuarios #usuarios-title {
+  margin-bottom: 20px;
+}
+
+#lista-usuarios #tabla-usuarios thead {
+  background-color: beige;
+}
+
+#lista-usuarios #tabla-usuarios #info-usuarios td {
+  padding: 10px 0;
+}
+
+#ctn-regiones {
+  padding: 2em 6em;
+}
+
+#ctn-regiones .bloque-region .region {
+  margin: 10px 0;
+}
+
+#ctn-regiones .bloque-region .region .paises {
+  margin: 20px 10px;
+}
+
+#ctn-regiones .bloque-region .region .paises .ciudades {
+  margin: 20px 20px;
+}
+
 * {
   margin: 0;
   padding: 0;
