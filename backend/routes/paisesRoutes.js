@@ -3,6 +3,7 @@ const {
     postPais,
     getPaises,
     getPaisPorId,
+    getPaisPorRegionId,
     putPaisPorId,
     deletePaisPorId
 } = require('../controllers/paisesController');
@@ -16,6 +17,8 @@ router.post('/', validarRolAdmin, validarBodyPais, postPais);
 router.get('/', validarRolAdmin, getPaises);
 // read by id
 router.get('/:paisId', validarRolAdmin, getPaisPorId);
+// read by region id
+router.get('/porRegion/:regionId', getPaisPorRegionId);
 // update
 router.put('/:paisId', validarRolAdmin, putPaisPorId);
 // delete

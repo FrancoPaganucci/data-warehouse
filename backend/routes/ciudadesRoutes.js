@@ -3,6 +3,7 @@ const {
     postCiudad,
     getCiudades,
     getCiudadPorId,
+    getCiudadPorPaisId,
     putCiudadPorId,
     deleteCiudadPorId
 } = require('../controllers/ciudadesController');
@@ -16,6 +17,8 @@ router.post('/', validarRolAdmin, postCiudad);
 router.get('/', validarRolAdmin, getCiudades);
 // read by id
 router.get('/:ciudadId', validarRolAdmin, getCiudadPorId);
+// read by pais id
+router.get('/porPais/:paisId', getCiudadPorPaisId);
 // update
 router.put('/:ciudadId', validarRolAdmin, putCiudadPorId);
 // delete

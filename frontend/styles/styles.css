@@ -203,12 +203,16 @@ header .navbar .left-menu ul li a {
   margin: 10px 0;
 }
 
-#ctn-regiones .bloque-region .region .paises {
-  margin: 20px 10px;
+#ctn-regiones .bloque-region .region .bloque-pais {
+  margin: 10px 0px 10px 50px;
 }
 
-#ctn-regiones .bloque-region .region .paises .ciudades {
+#ctn-regiones .bloque-region .region .bloque-pais .pais {
   margin: 20px 20px;
+}
+
+#ctn-regiones .bloque-region .region .bloque-pais .pais .bloque-ciudad {
+  margin: 10px 0px 10px 50px;
 }
 
 * {

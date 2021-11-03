@@ -35,6 +35,19 @@ const getPaisPorId = async (req, res) => {
     }
 };
 
+const getPaisPorRegionId = async (req, res) => {
+  try {
+    const PaisesOk = await Paises.findAll({
+      where: {
+        region_id: req.params.regionId
+      }
+    })
+    res.status(200).json(PaisesOk);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
+
 const putPaisPorId = (req,res) => {
     // update nombre
     if (req.body.nombre) {
@@ -83,6 +96,7 @@ module.exports = {
     postPais,
     getPaises,
     getPaisPorId,
+    getPaisPorRegionId,
     putPaisPorId,
     deletePaisPorId
 }

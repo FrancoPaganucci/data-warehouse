@@ -3,10 +3,14 @@
     .bloque-region {
         .region {
             margin: 10px 0;
-            .paises {
-                margin: 20px 10px;
-                .ciudades {
+            .bloque-pais {
+                margin: 10px 0px 10px 50px;
+                .pais {
                     margin: 20px 20px;
+
+                    .bloque-ciudad {
+                        margin: 10px 0px 10px 50px;
+                    }
                 }
             }
         }

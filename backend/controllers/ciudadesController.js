@@ -34,6 +34,19 @@ const getCiudadPorId = async (req, res) => {
     }
 };
 
+const getCiudadPorPaisId = async (req, res) => {
+  try {
+    const CiudadesOk = await Ciudades.findAll({
+      where: {
+        pais_id: req.params.paisId
+      }
+    })
+    res.status(200).json(CiudadesOk);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
+
 const putCiudadPorId = (req,res) => {
     // update nombre
     if (req.body.nombre) {
@@ -82,6 +95,7 @@ module.exports = {
     postCiudad,
     getCiudades,
     getCiudadPorId,
+    getCiudadPorPaisId,
     putCiudadPorId,
     deleteCiudadPorId
 };
