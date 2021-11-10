@@ -1,9 +1,8 @@
 const token = sessionStorage.getItem("token");
 const tokenJson = JSON.parse(token);
 console.log(tokenJson);
-ctn_regiones = document.getElementById("ctn-regiones");
+const ctn_regiones = document.getElementById("ctn-regiones");
 
-// REGIONES
 const traerRegiones = async () => {
     try {
         const resp = await fetch('http://localhost:3000/regiones', {
@@ -19,10 +18,72 @@ const traerRegiones = async () => {
         console.log(error);
     }
 };
-console.log(traerRegiones());
+const traerCiudades = async () => {
+    try {
+        const resp = await fetch('http://localhost:3000/ciudades', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${tokenJson.token}`
+            },
+        });
+        const info = await resp.json();
+        return info;
+    } catch (error) {
+        console.log(error);
+    }
+};
+const traerpaises = async () => {
+    try {
+        const resp = await fetch('http://localhost:3000/paises', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${tokenJson.token}`
+            },
+        });
+        const info = await resp.json();
+        return info;
+    } catch (error) {
+        console.log(error);
+    }
+};
+// prueba promise all
+const regiones = traerRegiones();
+const paises = traerpaises()
+const ciudades = traerCiudades();
+Promise.all([regiones, paises, ciudades]).then(values => {
+    console.log(values);
+    // pintar todo
+    // regiones
+    const array_regiones = values[0];
+    array_regiones.forEach(element => {
+        const bloque_region = document.createElement('ul');
+        bloque_region.className = "bloque-region";
+        const this_region = document.createElement('li');
+        this_region.className = "region";
+        this_region.id = `region-id-${element.id}`
+        this_region.innerHTML = element.nombre;
+        bloque_region.appendChild(this_region);
+        ctn_regiones.appendChild(bloque_region);
+    });
+
+    // paises
+    const array_paises = values[1];
+    array_paises.forEach(element => { 
+
+    })
+    // ciudades
+    const array_ciudades = values[2];
+
+}).catch(err => {
+    console.log(err);
+})
+
+
 
 // Con respuesta, crear arbol de región
-let resultadoRegiones = traerRegiones();
+/*let resultadoRegiones = traerRegiones();
 resultadoRegiones.then(response => {
     console.log(response);
     crearBloqueRegion(response)
@@ -58,11 +119,12 @@ async function crearBloqueRegion(data) {
                 const bloque_ciudad = document.createElement('ul');
                 bloque_ciudad.className = "bloque-ciudad";
                 this_pais.appendChild(bloque_ciudad);
-                bloque_ciudad.innerHTML = "BLOQUE CIUDAD";
+                //bloque_ciudad.innerHTML = `${response[i].id}`;
+                bloque_ciudad.id = `${response[i].id}`;
 
                 // ISSUE DE PROMESAS - Si corro esta función, el bloque de ciudad nunca se appendea, y el lugar de cada país es ocupado por la última ciudad de la response. Por consola, todos los fetch funcionan y la info es traída correctamente...
 
-                /*// usar el id de este país para traer sus ciudades
+                // usar el id de este país para traer sus ciudades
                 let resultadoCiudades = traerCiudadesPorPais(response[i].id);
                 resultadoCiudades.then(ciudad_resp => {
                     console.log(ciudad_resp)                 
@@ -77,49 +139,11 @@ async function crearBloqueRegion(data) {
                     }
                 }).catch(error => {
                     alert(error);
-                })*/
+                })
             }
             //traerCiudadesPorPais(response)
         }).catch(error => {
             alert(error);
         })
     }
-}
-
-// PAISES
-// traer países con fetch, appendearlas al bloque de region que le corresponda
-async function traerPaisesPorRegion(region_id) {
-    try {
-        const resp = await fetch(`http://localhost:3000/paises/porRegion/${region_id}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${tokenJson.token}`
-            },
-        });
-        const info = await resp.json();
-        console.log(`ÉXITO: traer paises por region fetch`);
-        return info;
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-// CIUDADES
-// traer ciudades con fetch, appendearlas al bloque de país que le corresponda
-async function traerCiudadesPorPais(pais_id) {
-    try {
-        const resp = await fetch(`http://localhost:3000/ciudades/porPais/${pais_id}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${tokenJson.token}`
-            },
-        });
-        const info = await resp.json();
-        console.log(`ÉXITO: traer ciudades por pais fetch`);
-        return info;
-    } catch (error) {
-        console.log(error);
-    }
-}
+}*/
