@@ -12,8 +12,8 @@ header a .main-logo {
   height: 48.8px;
   width: 48.8px;
   float: left;
-  margin-left: 22px;
-  padding-top: 25px;
+  margin-left: 39px;
+  padding-top: 19px;
 }
 
 header .navbar {
@@ -195,24 +195,62 @@ header .navbar .left-menu ul li a {
   padding: 10px 0;
 }
 
+#ctn-agregar-region {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+#ctn-agregar-region #btn-agregar-region {
+  font-size: 20px;
+  margin: 15px 45px 0 0;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
 #ctn-regiones {
-  padding: 2em 6em;
+  padding: 2em 2em;
+  font-size: 26px;
 }
 
 #ctn-regiones .bloque-region .region {
   margin: 10px 0;
+  padding: 20px;
+}
+
+#ctn-regiones .bloque-region .region .flecha {
+  width: 32px;
+  height: 30px;
+  background-color: black;
+  position: relative;
+  display: inline-block;
+  top: 10px;
+  left: 70px;
+  -webkit-clip-path: polygon(100% 100%, 0 50%, 100% 0);
+          clip-path: polygon(100% 100%, 0 50%, 100% 0);
+  cursor: pointer;
 }
 
 #ctn-regiones .bloque-region .region .bloque-pais {
-  margin: 10px 0px 10px 50px;
+  margin: 10px 0px 40px 60px;
 }
 
 #ctn-regiones .bloque-region .region .bloque-pais .pais {
-  margin: 20px 20px;
+  padding: 20px;
+  margin: 30px 20px;
 }
 
 #ctn-regiones .bloque-region .region .bloque-pais .pais .bloque-ciudad {
-  margin: 10px 0px 10px 50px;
+  margin: 25px 0px 40px 60px;
+}
+
+#ctn-regiones .bloque-region .region .bloque-pais .pais .bloque-ciudad .ciudad {
+  margin: 0 30px 0 30px;
+  padding: 10px 20px;
 }
 
 * {

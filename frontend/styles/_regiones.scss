@@ -1,15 +1,47 @@
+#ctn-agregar-region {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    #btn-agregar-region {
+        font-size: 20px;
+        margin: 15px 45px 0 0;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+}
+
 #ctn-regiones {
-    padding: 2em 6em;
+    padding: 2em 2em;
+    font-size: 26px;
     .bloque-region {
         .region {
             margin: 10px 0;
+            padding: 20px;
+            //background-color: rgb(228, 228, 228);
+            .flecha {
+                width: 32px;
+                height: 30px;
+                background-color: black;
+                position: relative;
+                display: inline-block;
+                top: 10px;
+                left: 70px;
+                clip-path: polygon(100% 100%, 0 50%, 100% 0);
+                cursor: pointer;
+            }
             .bloque-pais {
-                margin: 10px 0px 10px 50px;
+                margin: 10px 0px 40px 60px;
                 .pais {
-                    margin: 20px 20px;
-
+                    padding: 20px;
+                    margin: 30px 20px;
+                    //background-color: lightblue;
                     .bloque-ciudad {
-                        margin: 10px 0px 10px 50px;
+                        margin: 25px 0px 40px 60px;
+                        .ciudad {
+                            margin: 0 30px 0 30px;
+                            //background-color: white;
+                            padding: 10px 20px;
+                        }
                     }
                 }
             }
