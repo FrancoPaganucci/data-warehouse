@@ -1,0 +1,73 @@
+#lista-companias {
+    padding: 50px 90px;
+    #first-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        #agregar-compania {
+            font-size: 20px;
+            padding: 15px 30px;
+        }
+    }
+    #tabla-companias {
+        font-size: 19px;
+    }
+}
+#btn-borrar-compania {
+    padding: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+#btn-editar-compania {
+    padding: 5px;
+}
+.create-company-box {
+    position: absolute;
+    visibility: hidden;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
+}
+.form-box {
+    border: 1px solid black;
+    z-index: -1000;
+    width: 35%;
+    margin: 15vh auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2vh;
+    padding: 3vh 0;
+    .crear-usuario-title {
+        margin-bottom: 4vh;
+    }
+    .form-component {
+        label {
+            margin-bottom: 20px;
+            display: flex;
+            column-gap: 4vh;
+            justify-content: space-between;
+            align-items: center;
+            .create-user-inputs {
+                width: 190px;
+                height: 35.5px;
+
+            }
+            select {
+                width: 194px;
+                height: 35.5px;
+            }
+        }
+        .agregar-comp-btn-ctn {
+            display: flex;
+            justify-content: flex-end;
+            .agregar-comp-btn {
+                width: 120px;
+                height: 35.5px;
+                margin-top: 2vh;
+            }
+        }
+    }
+}

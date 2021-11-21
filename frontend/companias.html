@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +13,10 @@
     <link rel="stylesheet" href="./styles/styles.css">
     <title>Compañías</title>
 </head>
+
 <body>
     <header>
-        <a href="index.html"><img id="main-logo" class="main-logo" src="" alt=""></a>
+        <a href="index.html"><img id="main-logo" class="main-logo" src="../assets/coffee.png" alt=""></a>
         <nav class="navbar">
             <div class="left-menu">
                 <ul>
@@ -27,8 +29,69 @@
         </nav>
     </header>
 
-    <main>
+    <main id="companias_root">
+        <div id="lista-companias">
+            <div id="first-row">
+                <h1 id="companias-title">Compañías</h1>
+                <button id="agregar-compania">Agregar</button>
+            </div>
 
+            <table id="tabla-companias" width="100%">
+                <thead>
+                    <tr>
+                        <td>Nombre</td>
+                        <td>País</td>
+                        <td>Dirección</td>
+                        <td>Acciones</td>
+                    </tr>
+                </thead>
+                <tbody id="info-companias">
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <!--form agregar compañía-->
+        <!--Form crear nuevo contacto-->
+        <div class="create-company-box" id="agregar-form-comp">
+            <div class="form-box">
+                <h1 class="crear-usuario-title">Agregar compañía</h1>
+                <div class="form-component">
+                    <label for="nombre">
+                        <p>Nombre</p>
+                        <input type="text" placeholder="nombre" id="nombre-input" class="create-user-inputs">
+                    </label>
+                    <label for="direccion">
+                        <p>Direccion</p>
+                        <input type="text" placeholder="dirección" id="direccion-input" class="create-user-inputs">
+                    </label>
+                    <label for="email">
+                        <p>Email</p>
+                        <input type="email" placeholder="email" id="email-input" class="create-user-inputs">
+                    </label>
+                    <label for="telefono">
+                        <p>Teléfono</p>
+                        <input type="tel" placeholder="teléfono" id="telefono-input" class="create-user-inputs">
+                    </label>
+                    <label for="ciudad">
+                        <p>Ciudad</p>
+                        <input type="text" placeholder="ciudad" id="ciudad-input" class="create-user-inputs">
+                    </label>
+
+                    <div class="agregar-comp-btn-ctn">
+                        <button type="submit" class="agregar-comp-btn" id="agregar-comp-btn">Agregar</button>
+                    </div>
+                    <div class="agregar-comp-btn-ctn">
+                        <button type="submit" class="agregar-comp-btn" id="cancelar-comp-btn">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+
+    <script src="./js/companias.js"></script>
 </body>
+
 </html>

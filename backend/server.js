@@ -9,8 +9,6 @@ const db = require('./config');
 // instancia de Express
 const server = express();
 const PORT = process.env.APP_PORT;
-// instanciar modelos (ya no es necesario una vez que está todo separado en controladores y rutas)
-const { Ciudades, Companias, Contactos, Paises, Regiones, Usuarios } = require('./models/relations');
 // middlewares globales
 server.use(helmet());
 server.use(express.json());
@@ -24,10 +22,6 @@ server.use(
       path: ["/auth/login"]
     })
   );
-
-// importar MIDDLEWARES DE VALIDACIÓN ya no es necesario una vez que está todo separado por controladores y rutas
-const { validarRolAdmin, validarBodyRegion, validarBodyPais, validarBodyCompania } = require('./middlewares');
-
 
 // ============================
 // ======== ROUTING ===========

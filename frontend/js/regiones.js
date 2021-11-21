@@ -130,7 +130,9 @@ function crearBotonesRegion(this_region, this_region_id) {
     btn_add_country.style.fontSize = "16px";
     btn_add_country.style.marginLeft = "180px";
     btn_add_country.style.cursor = "pointer";
-    btn_edit.addEventListener('click', editarRegion);
+    btn_edit.addEventListener('click', function() {
+        editarRegion(this_region_id)
+    });
     btn_delete.addEventListener('click', function() {
         borrarRegion(this_region_id);
     });
@@ -164,12 +166,15 @@ function crearBotonesPais(this_pais, this_pais_id) {
     btn_add_city.style.fontSize = "16px";
     btn_add_city.style.marginLeft = "250px";
     btn_add_city.style.cursor = "pointer";
+    btn_edit.addEventListener('click', function() {
+        editarPais(this_pais_id);
+    });
     btn_delete.addEventListener('click', () => {
         borrarPais(this_pais_id);
-    })
+    });
     btn_add_city.addEventListener('click', () => {
         crearCiudad(this_pais_id);
-    })
+    });
     this_pais.appendChild(btn_edit);
     this_pais.appendChild(btn_delete);
     this_pais.appendChild(btn_add_city);
@@ -192,6 +197,9 @@ function crearBotonesCiudad(this_ciudad, this_ciudad_id) {
     btn_delete.style.cursor = "pointer";
     btn_delete.addEventListener('click', () => {
         borrarCiudad(this_ciudad_id);
+    });
+    btn_edit.addEventListener('click', () => {
+        editarCiudad(this_ciudad_id);
     })
     this_ciudad.appendChild(btn_edit);
     this_ciudad.appendChild(btn_delete);
@@ -207,7 +215,7 @@ function borrarRegion(this_region_id) {
         const deleteRegion = async () => {
             try {
                 const resp = await fetch(`http://localhost:3000/regiones/borrar/${region_id}`, {
-                    method: 'DELETE',
+                method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${tokenJson.token}`
@@ -225,8 +233,36 @@ function borrarRegion(this_region_id) {
         });
     }
 }
-function editarRegion() {
-
+function editarRegion(this_region_id) {
+    const region_id = this_region_id;
+    const nombre_region = prompt("Editar nombre de región:", "");
+    if (nombre_region == null || nombre_region == "") {
+        alert("Error: Debe ingresar una región válida");
+    }
+    const bodyPost = {
+        nombre: nombre_region
+    };
+    const editRegion = async () => {
+        try {
+            console.log("entra el fetch")
+            const resp = await fetch(`http://localhost:3000/regiones/${region_id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${tokenJson.token}`
+                },
+                body: JSON.stringify(bodyPost)
+            });
+            const info = await resp.json();
+            return info
+        } catch (error) {
+            console.log('Error al realizar la solicitud PUT al servidor: ' + `${error.message}`);
+        }
+    }
+    const resultado = editRegion();
+        resultado.then(response => {
+            window.location.href = "regionCiudad.html";
+        });
 }
 function crearRegion() {
     const nombre_region = prompt("Ingresar nueva región:", "");
@@ -286,8 +322,35 @@ function borrarPais(this_pais_id) {
         });
     }
 }
-function editarPais() {
-
+function editarPais(this_pais_id) {
+    const pais_id = this_pais_id;
+    const nombre_pais = prompt("Editar nombre de país:", "");
+    if (nombre_pais == null || nombre_pais == "") {
+        alert("Error: Debe ingresar un país válido");
+    }
+    const bodyPost = {
+        nombre: nombre_pais
+    };
+    const editRegion = async () => {
+        try {
+            const resp = await fetch(`http://localhost:3000/paises/${pais_id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${tokenJson.token}`
+                },
+                body: JSON.stringify(bodyPost)
+            });
+            const info = await resp.json();
+            return info
+        } catch (error) {
+            console.log('Error al realizar la solicitud PUT al servidor: ' + `${error.message}`);
+        }
+    }
+    const resultado = editRegion();
+        resultado.then(response => {
+            window.location.href = "regionCiudad.html";
+        });
 }
 function crearPais(region_id) {
     const nombre_pais = prompt("Ingresar un nuevo país:", "");
@@ -352,8 +415,35 @@ function borrarCiudad(this_ciudad_id) {
         });
     }
 }
-function editarCiudad() {
-
+function editarCiudad(this_ciudad_id) {
+    const ciudad_id = this_ciudad_id;
+    const nombre_ciudad = prompt("Editar nombre de país:", "");
+    if (nombre_ciudad == null || nombre_ciudad == "") {
+        alert("Error: Debe ingresar una ciudad válida");
+    }
+    const bodyPost = {
+        nombre: nombre_ciudad
+    };
+    const editRegion = async () => {
+        try {
+            const resp = await fetch(`http://localhost:3000/ciudades/${ciudad_id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${tokenJson.token}`
+                },
+                body: JSON.stringify(bodyPost)
+            });
+            const info = await resp.json();
+            return info
+        } catch (error) {
+            console.log('Error al realizar la solicitud PUT al servidor: ' + `${error.message}`);
+        }
+    }
+    const resultado = editRegion();
+        resultado.then(response => {
+            window.location.href = "regionCiudad.html";
+        });
 }
 function crearCiudad(pais_id) {
     const nombre_ciudad = prompt("Ingresar una nueva ciudad:", "");
@@ -389,14 +479,4 @@ function crearCiudad(pais_id) {
             window.location.href = "regionCiudad.html";
         })
     }
-}
-
-// caret tree
-var toggler = document.getElementsByClassName("caret");
-for (let i = 0; i < toggler.length; i++) {
-  toggler[i].addEventListener("click", function() {
-    alert("entra");
-    this.parentElement.querySelector(".nested").classList.toggle("active");
-    this.classList.toggle("caret-down");
-  });
 }

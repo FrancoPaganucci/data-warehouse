@@ -1,18 +1,24 @@
-const { Companias } = require('../models/relations');
+const { Companias, Ciudades } = require('../models/relations');
 
 const postCompania = async (req, res) => {
     try {
+      const ciudad_id = await Ciudades.findOne({
+        where: {
+          nombre: req.body.nombre_ciudad
+        }
+      })
       const nuevaCompania = await Companias.create({
         nombre: req.body.nombre,
         direccion: req.body.direccion,
         email: req.body.email,
         telefono: req.body.telefono,
-        ciudad_id: req.body.ciudad_id
+        ciudad_id: ciudad_id.id
       });
       res.status(200).json(nuevaCompania);
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
+
 };
 
 const getCompanias = async (req, res) => {

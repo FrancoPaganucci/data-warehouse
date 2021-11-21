@@ -145,10 +145,10 @@ const validarBodyCompania = (req, res, next) => {
       !req.body.direccion ||
       !req.body.email ||
       !req.body.telefono ||
-      !req.body.ciudad_id
+      !req.body.nombre_ciudad
   ) {
       res.status(400).json({
-          error: "datos incompletos, se requiere: nombre | direccion | email | telefono | ciudad_id",
+          error: "datos incompletos, se requiere: nombre | direccion | email | telefono | nombre_ciudad",
       });
   } else {
       next();

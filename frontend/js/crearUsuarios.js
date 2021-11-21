@@ -1,6 +1,6 @@
 // LOGIN CHECK
 const token = sessionStorage.getItem("token");
-const root = document.getElementById('usuariosRoot');
+const root = document.getElementById('usuarios-root');
 if (!token) {
     // bloquear acceso a la página, no está logueado. O redirigir al login
     const black_overlay = document.createElement('div');
@@ -17,9 +17,6 @@ if (!token) {
         alert("Debe estar logueado como administrador para poder cargar nuevos usuarios al sitema.");
         window.location.href = "login.html";
     }, 100);
-    
-    
-    
 }
 const tokenJson = JSON.parse(token);
 console.log(tokenJson);
@@ -43,7 +40,6 @@ function checkDoublePassword(pass1,pass2) {
 
 // función que crea el body post
 create_user_btn.addEventListener('click', () => {
-    console.log("entra al submit");
     // validar campos existentes
     validarCamposCrearUsuario();
     const bodyPost = {
